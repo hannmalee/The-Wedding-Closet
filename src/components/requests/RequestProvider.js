@@ -8,7 +8,7 @@ export const RequestProvider = (props) => {
     const getRequests = () => {
         return fetch("http://localhost:8088/requests")
             .then(res => res.json())
-            .then((data) => setItems(data))
+            .then((data) => setRequests(data))
     }
 
     const addRequest = requestObj => {
