@@ -4,10 +4,15 @@ import React from "react"
 import { Redirect, Route } from "react-router-dom"
 import { Shelf } from "./feed/shelf"
 import "./TheWeddingCloset.css"
+import { ItemProvider } from "./items/ItemProvider"
 
 
-export const ApplicationViews = () => (
+export const ApplicationViews = () => {
+
+    return (
     <>
+
+        <ItemProvider>
         <Route exact path="/">
             <h2>Community Shelves</h2>
             <article className="feed">
@@ -15,5 +20,8 @@ export const ApplicationViews = () => (
 
             </article>
         </Route>
+        </ItemProvider>
     </>
-)
+    )
+}
+    

@@ -6,19 +6,22 @@ export const Register = (props) => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
+    const city = useRef()
+    const state = useRef()
+    const aboutMe = useRef()
     const verifyPassword = useRef()
     const conflictDialog = useRef()
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
 
     const handleRegister = (e) => {
         e.preventDefault()
-
+ 
 
         existingUserCheck()
             .then((userExists) => {
@@ -30,7 +33,10 @@ export const Register = (props) => {
                         },
                         body: JSON.stringify({
                             email: email.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
+                            name: `${firstName.current.value} ${lastName.current.value}`,
+                            aboutMe: aboutMe.current.value,
+                            city: city.current.value,
+                            state: state.current.value,
                         })
                     })
                         .then(res => res.json())
@@ -71,7 +77,20 @@ export const Register = (props) => {
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Sign in </button>
+                    <label htmlFor="inputCity"> City </label>
+                    <input ref={city} type="city" name="city" className="form-control" placeholder="Nashville" required />
+                </fieldset><
+                    fieldset>
+                    <label htmlFor="inputState"> State </label>
+                    <input ref={state} type="state" name="state" className="form-control" placeholder="Tennessee" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputAboutMe"> Tell us a little about yourself: </label>
+                    <input ref={aboutMe} type="aboutMe" name="aboutMe" className="form-control" placeholder="I enjoy long walks on the pristine beaches of Percy Priest Lake." required />
+                </fieldset>
+
+                <fieldset>
+                    <button type="submit"> Sign up! </button>
                 </fieldset>
             </form>
         </main>
