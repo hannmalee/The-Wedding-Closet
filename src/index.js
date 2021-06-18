@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import { TheWeddingCloset } from './components/TheWeddingCloset';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TheWeddingCloset />
+      <Router>
+      <TheWeddingCloset />
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
