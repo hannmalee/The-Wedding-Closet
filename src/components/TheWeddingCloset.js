@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { Login } from "./auth/Login"; 
 import { Register } from "./auth/Register"; 
 import { Item } from "./items/Item";
-import { Shelf } from "./feed/shelf";
+import { Shelf } from "./shelves/shelf";
 import { ApplicationViews } from "./ApplicationsViews";
 import "./TheWeddingCloset.css";
 
