@@ -8,7 +8,7 @@ export const ItemProvider = (props) => {
     const getItems = () => {
         return fetch("http://localhost:8088/items")
             .then(res => res.json())
-            // .then(setItems)
+            // .then((itemData) => setItems(itemData))
     }
 
     const addItem = itemObj => {
@@ -22,10 +22,16 @@ export const ItemProvider = (props) => {
             .then(getItems)
     }
 
+    const getUserItems = userId => {
+
+        return fetch(`http://localhost:8088/items?userId=${userId}`)
+            .then(res => res.json())
+    }
+
 
     return (
         <ItemContext.Provider value={{
-            items, getItems, addItem
+            items, getItems, addItem, getUserItems
         }}>
             {props.children}
         </ItemContext.Provider>
