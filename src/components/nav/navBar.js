@@ -20,7 +20,7 @@ export const NavBar = (props) => {
                 
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/requests"><button>Requests</button></Link>
+                <Link className="navbar__link" to="/requests"><button>Request Inbox</button></Link>
                 
             </li>
 

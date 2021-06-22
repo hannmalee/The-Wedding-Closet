@@ -13,6 +13,7 @@ import { Profile } from "./profile/profile"
 import { UserContext } from "./UserProvider"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { RequestInbox } from "./requests/requestInbox"
 
 
 export const ApplicationViews = () => {
@@ -28,21 +29,24 @@ export const ApplicationViews = () => {
 
             <ItemProvider>
                 <UserProvider>
-                        <Route exact path="/profile/:userId(\d+)">
+                    <Route exact path="/profile/:userId(\d+)">
 
                         <Profile />
-                        </Route>
-                    <Route exact path="/">
-                        <NavBar />
-                        <h2>Community Shelves</h2>
-                        <article className="feed">
+                    </Route>
+                    <Route exact path="/requests/:userId(\d+)">
+                        <RequestInbox />
+                    </Route>
+                    <Route>
+                    <NavBar />
+                    <h2>Community Shelves</h2>
+                    <article className="feed">
 
-                            <ShelfList />
+                        <ShelfList />
 
-                        </article>
+                    </article>
                     </Route>
                 </UserProvider>
-            </ItemProvider>
+        </ItemProvider>
         </>
     )
 }

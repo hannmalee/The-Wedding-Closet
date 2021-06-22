@@ -8,7 +8,7 @@ import { UserProvider } from "../UserProvider"
 
 
 
-export const Profile = () => {
+export const MyProfile = () => {
 
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
@@ -44,12 +44,12 @@ export const Profile = () => {
                         // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
                         return (
                             <>
-                                <ul>Name: {user.name}</ul>
-                                <ul>Location: {user.city}, {user.state}</ul>
-                                <ul>About Me: {user.aboutMe}</ul>
-                                <ul>Email: {user.email}</ul>
+                                <h3>Name: {user.name}</h3>
+                                <h3>Location: {user.city}, {user.state}</h3>
+                                <h3>About Me: {user.aboutMe}</h3>
+                                <h3>Email: {user.email}</h3>
 
-                                <button>see {user.name}'s shelf</button>
+                                <button>See {user.name}'s Shelf</button>
 
 
                             </>
