@@ -2,7 +2,7 @@
 
 import { Shelf } from "./shelf";
 import React, { useContext, useEffect } from "react";
-import { UserContext } from "./UserProvider";
+import { UserContext } from "../UserProvider";
 import "./shelf.css"
 
 
@@ -18,16 +18,16 @@ export const ShelfList = () => {
         <>
             <div className="shelves">
 
-            {users.map(user => {
-                
-                return (
-                    <>
-                        <Shelf userObj={user} />
+                {users.map(user => {
 
-                    </>
-                )
-                
-            })}
+                    return (
+                        <>
+                            <Shelf userObj={user} />
+
+                        </>
+                    )
+
+                })}
             </div>
         </>
     )

@@ -9,13 +9,20 @@ export const UserProvider = (props) => {
         return fetch("http://localhost:8088/users")
             .then(res => res.json())
             .then((userData) => setUsers(userData))
+        }
+
+    const getUserProfiles = (id) => {
+
+        return fetch (`http://localhost:8088/users/${id}`)
+            .then (res => res.json())
+            // .then ((userProfileData) => setUsers(userProfileData))
     }
 
 
 
     return (
         <UserContext.Provider value={{
-            users, getUsers
+            users, getUsers, getUserProfiles
         }}>
             {props.children}
         </UserContext.Provider>
