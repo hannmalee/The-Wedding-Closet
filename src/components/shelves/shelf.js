@@ -10,6 +10,7 @@ export const Shelf = ({userObj}) => {
 
     const { getUserItems } = useContext(ItemContext)
     const [items, setItems] = useState([])
+    
 
     useEffect(() => {
         getUserItems(userObj.id)
@@ -21,7 +22,7 @@ export const Shelf = ({userObj}) => {
         <>
 
         <section className="shelf">
-            <h2 className="shelf__user"><Link to={`/shelves/userShelf/${userObj.id}`}>{userObj.name}</Link></h2>
+            <h2 className="shelf__user"><Link to={`/profile/${userObj.id}`}>{userObj.name}</Link></h2>
             <div className="item__list">
                 {items.map(item => {
 

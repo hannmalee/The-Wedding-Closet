@@ -9,7 +9,9 @@ import { UserContext } from '../UserProvider'
 
 
 
-export const UserShelf = ({userObj}) => {
+export const UserShelf = (userObj) => {
+
+
 
     const { getUserItems } = useContext(ItemContext)
     const [items, setItems] = useState([])

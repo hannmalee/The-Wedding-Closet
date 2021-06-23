@@ -4,6 +4,8 @@ import { UserContext, } from "../UserProvider"
 import "./profile.css"
 import { UserProvider } from "../UserProvider"
 import { Link } from "react-router-dom"
+import { Shelf } from "../shelves/shelf"
+import { UserShelf } from "../shelves/userShelf"
 
 
 
@@ -50,25 +52,26 @@ export const Profile = () => {
                                 <ul>About Me: {user.aboutMe}</ul>
                                 <ul>Email: {user.email}</ul>
 
-                                <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link>
+                                <UserShelf />
 
-                                <button onClick={
+                                {/* <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link> */}
 
-                                    return (
-                                    <>
+                                {/* <div className="shelf">
+                                    {
+                                        .map(item => <Link to={`/animals/detail/${animal.id}`}>
+                                            {animal.name}
+                                        </Link>
+                                        )
+                                    }
+                                </div> */}
 
-                                    </>
-                                )
-                                }>
-
-                            </ button>
 
 
                             </>
-            ) 
+                        )
                     }
                 })}
-        </div>
+            </div>
         </>
     )
 

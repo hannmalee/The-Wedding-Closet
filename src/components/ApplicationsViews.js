@@ -34,6 +34,9 @@ export const ApplicationViews = () => {
                     <RequestProvider>
 
                         <NavBar />
+                        <Route exact path="/shelves/shelf/:userId(\d+)">
+                            <Shelf />
+                        </Route>
                         <Route exact path="/profile/:userId(\d+)">
 
                             <Profile />
