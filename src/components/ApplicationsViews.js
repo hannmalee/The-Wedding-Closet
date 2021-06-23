@@ -15,6 +15,7 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { RequestInbox } from "./requests/requestInbox"
 import { RequestProvider } from "./requests/RequestProvider"
+import { UserShelf } from "./shelves/userShelf"
 
 
 export const ApplicationViews = () => {
@@ -37,7 +38,7 @@ export const ApplicationViews = () => {
 
                             <Profile />
                         </Route>
-                        <Route exact path="/requests/:userId(\d+)">
+                        <Route exact path="/requests/">
                             <RequestInbox />
                         </Route>
                         <Route exact path="/">

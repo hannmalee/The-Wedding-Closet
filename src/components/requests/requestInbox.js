@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { RequestContext } from "./RequestProvider"
 import "./request.css"
-import { RequestProvider } from "./RequestProvider"
 import { ItemContext } from "../items/ItemProvider"
+import { UserContext } from "../UserProvider"
 
 
 
@@ -13,15 +13,29 @@ export const RequestInbox = () => {
     const { requests, getRequests } = useContext(RequestContext)
     // const { getUserProfiles } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
-    const [request, setRequest] = useState({ userId: {}, recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {} })
+    const [arrayOfRequests, setRequest] = useState([])
+    const { users, getUsers } = useContext(UserContext)
 
     const { requestId } = useParams();
 
     useEffect(() => {
-        const thisRequest = requests.find(r => r.id === requestId) || { userId: {}, recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {} }
+        getRequests()
+        .then(getUsers)
+    }, [])
 
-        setRequest(thisRequest)
-    }, [requestId])
+    useEffect(() => {
+        getItems()
+    }, [])
+
+    useEffect(() => {
+        const userRequests = requests.filter(r => r.recipientId === parseInt(localStorage.getItem("wedding_closet_user"))) 
+        // || {
+        //     userId: {},
+        //     recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {}
+        // }
+
+        setRequest(userRequests)
+    }, [])
 
     // useEffect(() => {
     //     const thisProfile = users.find(u => u.id === userId) || { name: {}, city: {}, state: {}, aboutMe: {}, email: {} }
@@ -33,14 +47,6 @@ export const RequestInbox = () => {
     // useEffect(() => {
     //     getUserProfiles()
     // }, [])
-
-    useEffect(() => {
-        getRequests()
-    }, [])
-
-    useEffect(() => {
-        getItems()
-    }, [])
 
 
     return (
@@ -54,33 +60,32 @@ export const RequestInbox = () => {
 
 
 
-                    if (request.recipientId === parseInt(localStorage.getItem("the_wedding_closet_user"))) {
+                    if (request.recipientId === parseInt(localStorage.getItem("wedding_closet_user"))) {
 
-                        // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
-                        return (
-                            <>
-                                {/* <h3>Request from {user.name} to borrow {item.name}</h3>
+                    // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
+                    return (
+                        <>
+                            {/* <h3>Request from {user.name} to borrow {item.name}</h3>
 
                                 <h4> {request.text} </h4>
                                
                                 <radio>see {user.name}'s shelf</radio> */}
-                                <li>
+                            
+                            <div>
+                                <h3>Request from {request.user.name} for {request.item.name}</h3>
+                                
+                                <h4> {request.text} </h4>
+                                <button> approve request </button> 
+                                <button> deny request </button>
+                            </div>
+                    
+                        </>
 
-                                    <h3>Request from person to borrow item</h3>
-
-                                    <h4> message text </h4>
-
-                                    <button type="radio"> approve request </button>
-                                    <button type="radio"> deny request </button>
-                                    <button>send response</button>
-                                </li>
-                            </>
-
-                        )
-                    }
+                    )
+                }
 
 
-                })}
+            })}
             </div>
         </>
     )

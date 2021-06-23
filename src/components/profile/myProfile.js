@@ -49,7 +49,8 @@ export const MyProfile = () => {
                                 <h3>About Me: {user.aboutMe}</h3>
                                 <h3>Email: {user.email}</h3>
 
-                                <button>See {user.name}'s Shelf</button>
+                                {/* <button>See {user.name}'s Shelf</button> */}
+                                <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link>
 
 
                             </>

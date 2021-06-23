@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { UserContext, } from "../UserProvider"
 import "./profile.css"
 import { UserProvider } from "../UserProvider"
+import { Link } from "react-router-dom"
 
 
 
@@ -40,7 +41,7 @@ export const Profile = () => {
                 {users.map(user => { //only map can return 
 
                     if (user.id === parseInt(userId)) {
-                        
+
                         // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
                         return (
                             <>
@@ -49,14 +50,25 @@ export const Profile = () => {
                                 <ul>About Me: {user.aboutMe}</ul>
                                 <ul>Email: {user.email}</ul>
 
-                                <button>see {user.name}'s shelf</button>
+                                <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link>
+
+                                <button onClick={
+
+                                    return (
+                                    <>
+
+                                    </>
+                                )
+                                }>
+
+                            </ button>
 
 
                             </>
-                        ) 
+            ) 
                     }
                 })}
-            </div>
+        </div>
         </>
     )
 

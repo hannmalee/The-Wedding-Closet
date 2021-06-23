@@ -7,7 +7,7 @@ export const RequestProvider = (props) => {
     const [requests, setRequests] = useState([])
 
     const getRequests = () => {
-        return fetch("http://localhost:8088/requests")
+        return fetch("http://localhost:8088/requests?_expand=user&_expand=item")
             .then(res => res.json())
             .then((requestdata) => setRequests(requestdata))
     }
