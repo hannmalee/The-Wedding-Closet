@@ -8,19 +8,20 @@ import { ItemContext } from "../items/ItemProvider"
 
 
 
-export const RequestInbox = () => { 
+export const RequestInbox = () => {
 
     const { requests, getRequests } = useContext(RequestContext)
     // const { getUserProfiles } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
+    const [request, setRequest] = useState({ userId: {}, recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {} })
 
     const { requestId } = useParams();
 
     useEffect(() => {
-        const thisRequest = request.find(r => r.id === requestId) || { userId: {}, recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {} }
+        const thisRequest = requests.find(r => r.id === requestId) || { userId: {}, recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {} }
 
         setRequest(thisRequest)
-    }, [userId])
+    }, [requestId])
 
     // useEffect(() => {
     //     const thisProfile = users.find(u => u.id === userId) || { name: {}, city: {}, state: {}, aboutMe: {}, email: {} }
@@ -41,15 +42,19 @@ export const RequestInbox = () => {
         getItems()
     }, [])
 
+
     return (
         <>
             <div className="request">
 
                 <h1>Request Inbox</h1>
 
-                {requests.map(request => { //only map can return jsx
+                {requests.map((request) => { //only map can return jsx
 
-                    if (recipientId === parseInt(localStorage.getItem("the_wedding_closet_user"))) {
+
+
+
+                    if (request.recipientId === parseInt(localStorage.getItem("the_wedding_closet_user"))) {
 
                         // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
                         return (
@@ -59,16 +64,22 @@ export const RequestInbox = () => {
                                 <h4> {request.text} </h4>
                                
                                 <radio>see {user.name}'s shelf</radio> */}
-                                <h3>Request from person to borrow item</h3>
+                                <li>
 
-                                <h4> message text </h4>
+                                    <h3>Request from person to borrow item</h3>
 
-                                <button type="radio"> approve request </button>
-                                <button type="radio"> deny request </button>
-                                <button>send response</button>
+                                    <h4> message text </h4>
+
+                                    <button type="radio"> approve request </button>
+                                    <button type="radio"> deny request </button>
+                                    <button>send response</button>
+                                </li>
                             </>
+
                         )
                     }
+
+
                 })}
             </div>
         </>

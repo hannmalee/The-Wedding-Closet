@@ -3,13 +3,13 @@ import React, { useState, createContext } from "react"
 export const RequestContext = createContext()
 
 export const RequestProvider = (props) => {
-    
+
     const [requests, setRequests] = useState([])
 
     const getRequests = () => {
         return fetch("http://localhost:8088/requests")
             .then(res => res.json())
-            .then((data) => setRequests(data))
+            .then((requestdata) => setRequests(requestdata))
     }
 
     const addRequest = requestObj => {
