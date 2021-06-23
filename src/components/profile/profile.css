@@ -1,11 +1,11 @@
 
-.user {
+.profile {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   
-  .users {
+  .profiles {
       flex-basis: 28%;
       margin: 1em;
       padding: 1em;

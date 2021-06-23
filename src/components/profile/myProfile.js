@@ -3,15 +3,12 @@ import { useParams } from "react-router-dom"
 import { UserContext, } from "../UserProvider"
 import "./profile.css"
 import { UserProvider } from "../UserProvider"
-import { Link } from "react-router-dom"
-import { Shelf } from "../shelves/shelf"
-import { UserShelf } from "../shelves/userShelf"
 
 
 
 
 
-export const Profile = () => {
+export const MyProfile = () => {
 
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
@@ -43,32 +40,21 @@ export const Profile = () => {
                 {users.map(user => { //only map can return 
 
                     if (user.id === parseInt(userId)) {
-
+                        
                         // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
                         return (
                             <>
-                                <ul>Name: {user.name}</ul>
-                                <ul>Location: {user.city}, {user.state}</ul>
-                                <ul>About Me: {user.aboutMe}</ul>
-                                <ul>Email: {user.email}</ul>
+                                <h3>Name: {user.name}</h3>
+                                <h3>Location: {user.city}, {user.state}</h3>
+                                <h3>About Me: {user.aboutMe}</h3>
+                                <h3>Email: {user.email}</h3>
 
-                                <UserShelf />
-
-                                {/* <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link> */}
-
-                                {/* <div className="shelf">
-                                    {
-                                        .map(item => <Link to={`/animals/detail/${animal.id}`}>
-                                            {animal.name}
-                                        </Link>
-                                        )
-                                    }
-                                </div> */}
-
+                                {/* <button>See {user.name}'s Shelf</button> */}
+                                <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link>
 
 
                             </>
-                        )
+                        ) 
                     }
                 })}
             </div>
