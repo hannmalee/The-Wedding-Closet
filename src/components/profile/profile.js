@@ -6,6 +6,8 @@ import { UserProvider } from "../UserProvider"
 import { Link } from "react-router-dom"
 import { Shelf } from "../shelves/shelf"
 import { UserShelf } from "../shelves/userShelf"
+import { ItemContext } from "../items/ItemProvider"
+import { Item } from "../items/Item"
 
 
 
@@ -16,7 +18,7 @@ export const Profile = () => {
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
     const [user, setUser] = useState({ name: {}, city: {}, state: {}, aboutMe: {}, email: {} })
-
+    const { items, getItems } = useContext(ItemContext)
     const { userId } = useParams();
 
     useEffect(() => {
@@ -31,7 +33,7 @@ export const Profile = () => {
     // }, [])
 
     useEffect(() => {
-        getUsers()
+        getUsers(getItems)
     }, [])
 
     return (
@@ -52,19 +54,21 @@ export const Profile = () => {
                                 <ul>About Me: {user.aboutMe}</ul>
                                 <ul>Email: {user.email}</ul>
 
-                                <UserShelf />
+                                <h3> {user.name}'s shelf </h3>
 
-                                {/* <Link to={`/shelves/shelf/${user.id}`}>see {user.name}'s shelf</Link> */}
+                                <div className="items">
+                                    <ul> {user.items.map(item => {
+                                        return (
+                                            <>
+                                                <h4>Item: {item.name}</h4> <button> request item</button>
+                                                {/* create link for form */}
+                                                <h4>Description: {item.description}</h4>
 
-                                {/* <div className="shelf">
-                                    {
-                                        .map(item => <Link to={`/animals/detail/${animal.id}`}>
-                                            {animal.name}
-                                        </Link>
+                                            </>
                                         )
-                                    }
-                                </div> */}
+                                    })}</ul>
 
+                                </div>
 
 
                             </>
