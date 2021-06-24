@@ -16,6 +16,9 @@ import { Link } from "react-router-dom"
 import { RequestInbox } from "./requests/requestInbox"
 import { RequestProvider } from "./requests/RequestProvider"
 import { UserShelf } from "./shelves/userShelf"
+import { EditMyProfile } from "./profile/editMyProfile"
+import { MyProfile } from "./profile/myProfile"
+import { AddItemForm } from "./items/addItemForm"
 
 
 export const ApplicationViews = () => {
@@ -28,18 +31,24 @@ export const ApplicationViews = () => {
 
     return (
         <>
-
             <ItemProvider>
                 <UserProvider>
                     <RequestProvider>
-
                         <NavBar />
                         <Route exact path="/shelves/shelf/:userId(\d+)">
                             <Shelf />
                         </Route>
+                        <Route exact path="/items/create">
+                            <AddItemForm />
+                        </Route>
                         <Route exact path="/profile/:userId(\d+)">
-
                             <Profile />
+                        </Route>
+                        <Route exact path="/profile/myProfile/:userId(\d+)">
+                            <MyProfile />
+                        </Route>
+                        <Route exact path="/profile/editMyProfile/:userId(\d+)">
+                            <EditMyProfile />
                         </Route>
                         <Route exact path="/requests/">
                             <RequestInbox />

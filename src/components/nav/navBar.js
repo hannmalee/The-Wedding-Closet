@@ -14,7 +14,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/">The Wedding Closet</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to={`/profile/${localStorage.getItem('wedding_closet_user')}`}>
+                <Link className="navbar__link" to={`/profile/myProfile/${localStorage.getItem('wedding_closet_user')}`}>
                     <button>My Profile</button>
                     </Link>
                 
