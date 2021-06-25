@@ -22,7 +22,7 @@ export const EditItemForm = () => {
       //When changing a state object or array,
       //always create a copy make changes, and then set state.
       const newItem = { ...item }
-      //animal is an object with properties.
+      //item is an object with properties.
       //set the property to the new value
       newItem[event.target.name] = event.target.value
       //update state

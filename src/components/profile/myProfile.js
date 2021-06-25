@@ -73,6 +73,7 @@ export const MyProfile = () => {
                                                 .then(() => {
                                                     history.push(`/profile/myProfile/${parseInt(localStorage.getItem("wedding_closet_user"))}`)
                                                 })
+                                                .then(getUsers)
                                         }
 
                                         

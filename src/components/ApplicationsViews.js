@@ -20,6 +20,7 @@ import { EditMyProfile } from "./profile/editMyProfile"
 import { MyProfile } from "./profile/myProfile"
 import { AddItemForm } from "./items/addItemForm"
 import { EditItemForm } from "./items/editItemForm"
+import { RequestItemForm } from "./requests/requestItemForm"
 
 
 export const ApplicationViews = () => {
@@ -47,6 +48,9 @@ export const ApplicationViews = () => {
                         </Route>
                         <Route exact path="/profile/:userId(\d+)">
                             <Profile />
+                        </Route>
+                        <Route exact path="/requests/requestItemForm:itemId(\d+)">
+                            <RequestItemForm />
                         </Route>
                         <Route exact path="/profile/myProfile/:userId(\d+)">
                             <MyProfile />

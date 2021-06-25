@@ -34,6 +34,8 @@ export const AddItemForm = () => {
 
     const handleClickSaveItem = (event => {
 
+        
+
         const userId = parseInt(localStorage.getItem("wedding_closet_user"))
 
         const newItem = {

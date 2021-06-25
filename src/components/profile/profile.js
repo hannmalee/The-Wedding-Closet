@@ -8,6 +8,7 @@ import { Shelf } from "../shelves/shelf"
 import { UserShelf } from "../shelves/userShelf"
 import { ItemContext } from "../items/ItemProvider"
 import { Item } from "../items/Item"
+import { RequestItemForm } from "../requests/requestItemForm"
 
 
 
@@ -17,15 +18,15 @@ export const Profile = () => {
 
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
-    const [user, setUser] = useState({ name: {}, city: {}, state: {}, aboutMe: {}, email: {} })
+    const [user, setUser] = useState({items:[]})
     const { items, getItems } = useContext(ItemContext)
     const { userId } = useParams();
 
     useEffect(() => {
-        const thisProfile = users.find(u => u.id === userId) || { name: {}, city: {}, state: {}, aboutMe: {}, email: {} }
-
+        const thisProfile = users.find(u => u.id === parseInt(userId))
+        console.log(users)
         setUser(thisProfile)
-    }, [userId])
+    }, [users])
 
 
     // useEffect(() => {
@@ -33,48 +34,46 @@ export const Profile = () => {
     // }, [])
 
     useEffect(() => {
-        getUsers(getItems)
+        getUsers()
+            .then(() => getItems())
     }, [])
-
+console.log(users)
     return (
         <>
             <div className="profile">
 
                 <h1>User Profile</h1>
 
-                {users.map(user => { //only map can return 
+                <>
+                    <ul>Name: {user?.name}</ul>
+                    <ul>Location: {user?.city}, {user?.state}</ul>
+                    <ul>About Me: {user?.aboutMe}</ul>
+                    <ul>Email: {user?.email}</ul>
 
-                    if (user.id === parseInt(userId)) {
+                    <h3> {user?.name}'s shelf </h3>
 
-                        // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
-                        return (
-                            <>
-                                <ul>Name: {user.name}</ul>
-                                <ul>Location: {user.city}, {user.state}</ul>
-                                <ul>About Me: {user.aboutMe}</ul>
-                                <ul>Email: {user.email}</ul>
+                    <div className="items">
+                        <ul> {user?.items.map(item => {
+                            return (
+                                <>
+                                    <h4>Item: {item.name}</h4>
 
-                                <h3> {user.name}'s shelf </h3>
+                                    <button onClick={RequestItemForm}> request item</button>
 
-                                <div className="items">
-                                    <ul> {user.items.map(item => {
-                                        return (
-                                            <>
-                                                <h4>Item: {item.name}</h4> <button> request item</button>
-                                                {/* create link for form */}
-                                                <h4>Description: {item.description}</h4>
+                                    {/* create link for form */}
+                                    <h4>Description: {item.description}</h4>
 
-                                            </>
-                                        )
-                                    })}</ul>
+                                </>
+                            )
+                        })}</ul>
 
-                                </div>
+                    </div>
 
 
-                            </>
-                        )
-                    }
-                })}
+                </>
+                
+                    
+                
             </div>
         </>
     )
