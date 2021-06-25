@@ -49,7 +49,7 @@ export const ApplicationViews = () => {
                         <Route exact path="/profile/:userId(\d+)">
                             <Profile />
                         </Route>
-                        <Route exact path="/requests/requestItemForm:itemId(\d+)">
+                        <Route exact path="/requests/requestItemForm/:itemId(\d+)">
                             <RequestItemForm />
                         </Route>
                         <Route exact path="/profile/myProfile/:userId(\d+)">

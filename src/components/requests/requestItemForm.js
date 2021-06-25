@@ -8,13 +8,18 @@ import { useHistory, useParams } from 'react-router-dom';
 
 export const RequestItemForm = () => {
 
-    const { items, getItems } = useContext(ItemContext)
+    const { getItemById, getItems } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { requests, addRequest } = useContext(RequestContext)
-    const [user,setUser] = useState()
-
+    const [user,setUser] = useState([])
+    const [ item, setItem ] = useState({})
+    
+    
+    const { itemId } = useParams()
+    
+    
     const [request, setRequest] = useState({
-
+        
         userId: 0,
         recipientId: "",
         requestAccepted: Boolean, 
@@ -22,20 +27,37 @@ export const RequestItemForm = () => {
         itemId: 0,
         read: Boolean, 
         date: Date,
-
+        
     });
     
+    useEffect (() => {
+        const thisRequest = requests.find(r => r.id === parseInt(itemId))
+        setRequest(thisRequest)
+    },[])
 
-    const { itemId } = useParams()
+    // useEffect (() => {
+    //     const thisUser = users.find(user => user.id === parseInt(userId))
+    //     setUser(thisUser)
+    // },[])
+
     const history = useHistory();
    
     // const user = users.map(user => user.id === parseInt(userId))
-    const item = items.map(item => item.id === parseInt(itemId))
+    // const item = items.map(item => item.id === parseInt(itemId))
    
 
     useEffect(() => {
-        getUsers()
-        .then(() => getItems())
+        getUsers().then(getItems).then(() => {
+            if (itemId) {
+                getItemById(itemId)
+                .then(item => {
+                    setItem(item)
+                })
+            }
+            
+
+        })
+        // .then(() => getItems())
     }, [])
 
     const handleControlledInputChange = (event) => {
@@ -60,8 +82,8 @@ export const RequestItemForm = () => {
             userId: parseInt(localStorage.getItem("wedding_closet_user")),
             recipientId: user.id,
             requestAccepted: false, 
-            text: item.text,
-            itemId: item.id,
+            text: user.item.text,
+            itemId: user.item.id,
             read: false, 
             date: Date,
         }
@@ -72,10 +94,15 @@ export const RequestItemForm = () => {
     }
     )
 
+    
+   const findItemUser = users.find(user => user.id === item.userId)
+
     return (
         <>
-        <h3>Send request for {user}'s ${item}:</h3>
-        <fieldset className="request__message" onChange={handleControlledInputChange}> Message: </fieldset>
+        <h3>Send request for {findItemUser.name}'s {item.name}:</h3>
+        <fieldset className="request__message" onChange={handleControlledInputChange}> Message: 
+        
+        </fieldset>
         <button onClick={handleClickRequestItem}>Send Request</button>
         </>
 

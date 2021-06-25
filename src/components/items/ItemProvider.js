@@ -6,7 +6,7 @@ export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
 
     const getItems = () => {
-        return fetch("http://localhost:8088/items")
+        return fetch("http://localhost:8088/items?_expand=user")
             .then(res => res.json())
             // .then((itemData) => setItems(itemData))
     }
@@ -49,8 +49,8 @@ export const ItemProvider = (props) => {
     }
 
     const getItemById = (itemId) => {
-        return fetch(`http://localhost:8088/items/${itemId}`).then((res) =>
-          res.json()
+        return fetch(`http://localhost:8088/items/${itemId}`)
+        .then((res) => res.json()
         );
       };
 

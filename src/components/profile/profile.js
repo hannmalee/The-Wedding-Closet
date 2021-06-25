@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { UserContext, } from "../UserProvider"
 import "./profile.css"
 import { UserProvider } from "../UserProvider"
@@ -14,19 +14,27 @@ import { RequestItemForm } from "../requests/requestItemForm"
 
 
 
+
 export const Profile = () => {
 
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
     const [user, setUser] = useState({items:[]})
     const { items, getItems } = useContext(ItemContext)
-    const { userId } = useParams();
+    const { userId, itemId } = useParams();
+    const [ item, setItem ] = useState([])
+
+    const history = useHistory()
 
     useEffect(() => {
         const thisProfile = users.find(u => u.id === parseInt(userId))
-        console.log(users)
         setUser(thisProfile)
     }, [users])
+
+    useEffect(() => {
+        const thisItem = items.find(item => item.id === parseInt(user.itemId))
+        setItem(thisItem)
+    }, [items])
 
 
     // useEffect(() => {
@@ -37,7 +45,9 @@ export const Profile = () => {
         getUsers()
             .then(() => getItems())
     }, [])
-console.log(users)
+
+
+    
     return (
         <>
             <div className="profile">
@@ -54,11 +64,15 @@ console.log(users)
 
                     <div className="items">
                         <ul> {user?.items.map(item => {
+                            
+                        
+                              
+                            
                             return (
                                 <>
                                     <h4>Item: {item.name}</h4>
 
-                                    <button onClick={RequestItemForm}> request item</button>
+                                    <button onClick={() => history.push(`/requests/requestItemForm/${item.id}`)}> request item</button>
 
                                     {/* create link for form */}
                                     <h4>Description: {item.description}</h4>
