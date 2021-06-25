@@ -48,10 +48,16 @@ export const ItemProvider = (props) => {
 
     }
 
+    const getItemById = (itemId) => {
+        return fetch(`http://localhost:8088/items/${itemId}`).then((res) =>
+          res.json()
+        );
+      };
+
 
     return (
         <ItemContext.Provider value={{
-            items, getItems, addItem, deleteItem, getUserItems, updateItem
+            items, getItems, addItem, deleteItem, getUserItems, updateItem, getItemById
         }}>
             {props.children}
         </ItemContext.Provider>

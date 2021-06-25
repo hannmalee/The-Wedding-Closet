@@ -74,6 +74,8 @@ export const MyProfile = () => {
                                                     history.push(`/profile/myProfile/${parseInt(localStorage.getItem("wedding_closet_user"))}`)
                                                 })
                                         }
+
+                                        
                                         
                                         return (
 
@@ -82,7 +84,9 @@ export const MyProfile = () => {
 
 
 
-                                                <h4>Item: {item.name}</h4> <button> edit</button><button onClick={handleDelete}> delete</button>
+                                                <h4>Item: {item.name}</h4> <button onClick={() => {
+                                                    history.push(`/items/edit/${item.id}`)
+                                                }}> edit</button><button onClick={handleDelete}> delete</button>
                                                 {/* create form for editing,deleting */}
                                                 <h4>Description: {item.description}</h4>
 

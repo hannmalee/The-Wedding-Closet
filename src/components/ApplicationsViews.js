@@ -19,6 +19,7 @@ import { UserShelf } from "./shelves/userShelf"
 import { EditMyProfile } from "./profile/editMyProfile"
 import { MyProfile } from "./profile/myProfile"
 import { AddItemForm } from "./items/addItemForm"
+import { EditItemForm } from "./items/editItemForm"
 
 
 export const ApplicationViews = () => {
@@ -37,6 +38,9 @@ export const ApplicationViews = () => {
                         <NavBar />
                         <Route exact path="/shelves/shelf/:userId(\d+)">
                             <Shelf />
+                        </Route>
+                        <Route exact path="/items/edit/:itemId(\d+)">
+                            <EditItemForm />
                         </Route>
                         <Route exact path="/items/create">
                             <AddItemForm />
