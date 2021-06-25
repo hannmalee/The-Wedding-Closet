@@ -5,6 +5,8 @@ import "./profile.css"
 import { UserProvider } from "../UserProvider"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
+import { ItemContext } from "../items/ItemProvider"
+
 
 
 
@@ -17,7 +19,7 @@ export const MyProfile = () => {
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
     const [user, setUser] = useState({ name: {}, city: {}, state: {}, aboutMe: {}, email: {} })
-    
+    const { items, getItems, deleteItem } = useContext(ItemContext)
 
     const { userId } = useParams();
 
@@ -30,6 +32,7 @@ export const MyProfile = () => {
     }, [userId])
 
 
+
     // useEffect(() => {
     //     getUserProfiles()
     // }, [])
@@ -37,6 +40,10 @@ export const MyProfile = () => {
     useEffect(() => {
         getUsers()
     }, [])
+
+
+
+
 
     return (
         <>
@@ -60,9 +67,22 @@ export const MyProfile = () => {
 
                                 <div className="items">
                                     <ul> {user.items.map(item => {
+
+                                        const handleDelete = () => {
+                                            deleteItem(item.id)
+                                                .then(() => {
+                                                    history.push(`/profile/myProfile/${parseInt(localStorage.getItem("wedding_closet_user"))}`)
+                                                })
+                                        }
+                                        
                                         return (
+
+
                                             <>
-                                                <h4>Item: {item.name}</h4> <button> edit</button><button> delete</button>
+
+
+
+                                                <h4>Item: {item.name}</h4> <button> edit</button><button onClick={handleDelete}> delete</button>
                                                 {/* create form for editing,deleting */}
                                                 <h4>Description: {item.description}</h4>
 
@@ -73,14 +93,14 @@ export const MyProfile = () => {
                                 </div>
                                 <div>
 
-                                <button onClick={
-                                    () => history.push("/items/create")
-                                }> add item </button>
+                                    <button onClick={
+                                        () => history.push("/items/create")
+                                    }> add item </button>
                                 </div>
 
                             </>
                         )
-                        
+
                     }
                 })}
             </div>

@@ -22,6 +22,13 @@ export const ItemProvider = (props) => {
             .then(getItems)
     }
 
+    const deleteItem = itemId => {
+        return fetch(`http://localhost:8088/items/${itemId}`, {
+            method: "DELETE"
+        })
+        .then(getItems)
+    }
+
     const getUserItems = userId => {
 
         return fetch(`http://localhost:8088/items?userId=${userId}`)
@@ -31,7 +38,7 @@ export const ItemProvider = (props) => {
 
     return (
         <ItemContext.Provider value={{
-            items, getItems, addItem, getUserItems
+            items, getItems, addItem, deleteItem, getUserItems
         }}>
             {props.children}
         </ItemContext.Provider>
