@@ -35,10 +35,23 @@ export const ItemProvider = (props) => {
             .then(res => res.json())
     }
 
+    const updateItem = item => {
+        return fetch(`http://localhost:8088/items/${item.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(item)
+        })
+            .then(getItems)
+
+
+    }
+
 
     return (
         <ItemContext.Provider value={{
-            items, getItems, addItem, deleteItem, getUserItems
+            items, getItems, addItem, deleteItem, getUserItems, updateItem
         }}>
             {props.children}
         </ItemContext.Provider>
