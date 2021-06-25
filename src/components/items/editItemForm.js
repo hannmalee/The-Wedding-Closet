@@ -29,16 +29,16 @@ export const EditItemForm = () => {
       setItem(newItem)
     }
 
-    const user = users.map(user => user.id)
+ 
     const handleSaveItem = () => {
         if (itemId){
             updateItem({
                 id: item.id, 
-                userId: user.id,
+                userId: parseInt(localStorage.getItem("wedding_closet_user")),
                 name: item.name,
                 description: item.description,
             })
-            .then(() => history.push(`/items/${item.id}`))
+            .then(() => history.push(`/profile/myProfile/${parseInt(localStorage.getItem("wedding_closet_user"))}`))
         }
     }
     

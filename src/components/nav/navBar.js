@@ -6,7 +6,9 @@ import { useState, useContext } from "react"
 
 export const NavBar = (props) => {
 
-    
+    const logOut = () => {
+        localStorage.removeItem("wedding_closet_user")
+    }
     
     return (
         <ul className="navbar">
@@ -21,6 +23,10 @@ export const NavBar = (props) => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/requests"><button>Request Inbox</button></Link>
+                
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/login"><button onClick={logOut}>logout</button></Link>
                 
             </li>
 
