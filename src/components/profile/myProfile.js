@@ -96,7 +96,7 @@ export const MyProfile = () => {
                                     })}</ul>
 
                                 </div>
-                                <div>
+                                <div className="addItemButton">
 
                                     <button onClick={
                                         () => history.push("/items/create")

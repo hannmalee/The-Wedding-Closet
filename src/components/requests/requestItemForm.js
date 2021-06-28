@@ -17,7 +17,6 @@ export const RequestItemForm = () => {
 
     const { itemId } = useParams()
 
-    const [requestRecipientId, setRequestRecipientId] = useState({})
     const [request, setRequest] = useState({
 
         userId: 0,
@@ -48,21 +47,21 @@ export const RequestItemForm = () => {
 
     useEffect(() => {
         getUsers().then(getItems)
-        
+
         // .then(() => {
-            // if (itemId) {
-            //     console.log("hey i'm running!")
-            //     getItemById(itemId)
-            //         .then(item => {
-            //             setItem(item)
-            //         })
-            
+        // if (itemId) {
+        //     console.log("hey i'm running!")
+        //     getItemById(itemId)
+        //         .then(item => {
+        //             setItem(item)
+        //         })
+
         // })
     }, [itemId])
 
     useEffect(() => {
         if (item.userId) {
-        getUserById(item.userId).then((userObj) => setUser(userObj))
+            getUserById(item.userId).then((userObj) => setUser(userObj))
         }
         // const findItemUser = users.find(user => user.id === item.userId) || { item: {} }
         // setUser(findItemUser)
@@ -85,14 +84,15 @@ export const RequestItemForm = () => {
 
 
 
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChange = (event => {
+
 
         const newRequest = { ...request }
 
         newRequest[event.target.id] = event.target.value
 
         setRequest(newRequest)
-    }
+    })
 
 
 
@@ -106,7 +106,7 @@ export const RequestItemForm = () => {
             userId: parseInt(localStorage.getItem("wedding_closet_user")),
             recipientId: user.id,
             requestAccepted: false,
-            text: "",
+            text: request.text,
             itemId: item.id,
             read: false,
             date: Date.now(),
@@ -123,7 +123,9 @@ export const RequestItemForm = () => {
     return (
         <>
             <h3>Send request for {user.name}'s {item.name}:</h3>
-            <fieldset className="request__message" onChange={handleControlledInputChange}> Message:
+            <fieldset className="request__message" onChange={handleControlledInputChange}>
+                <label htmlFor="message">compose message:</label>
+                <input type="text" id="text" required autoFocus className="form-control" placeholder="input request message" value={request.text} onChange={handleControlledInputChange} />
             </fieldset>
             <button onClick={handleClickRequestItem}>Send Request</button>
         </>

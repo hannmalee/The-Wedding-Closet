@@ -19,10 +19,10 @@ export const Profile = () => {
 
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
-    const [user, setUser] = useState({items:[]})
+    const [user, setUser] = useState({ items: [] })
     const { items, getItems } = useContext(ItemContext)
     const { userId, itemId } = useParams();
-    const [ item, setItem ] = useState([])
+    const [item, setItem] = useState([])
 
     const history = useHistory()
 
@@ -47,7 +47,7 @@ export const Profile = () => {
     }, [])
 
 
-    
+
     return (
         <>
             <div className="profile">
@@ -55,28 +55,28 @@ export const Profile = () => {
                 <h1>User Profile</h1>
 
                 <>
-                    <ul>Name: {user.name}</ul>
-                    <ul>Location: {user.city}, {user?.state}</ul>
-                    <ul>About Me: {user.aboutMe}</ul>
-                    <ul>Email: {user.email}</ul>
+                    <ul>Name: {user?.name}</ul>
+                    <ul>Location: {user?.city}, {user?.state}</ul>
+                    <ul>About Me: {user?.aboutMe}</ul>
+                    <ul>Email: {user?.email}</ul>
 
-                    <h3> {user.name}'s shelf </h3>
+                    <h3 className="userShelf"> {user?.name}'s shelf </h3>
 
                     <div className="items">
-                        <ul> {user.items.map(item => {
-                            
-                        
-                              
-                            
+                        <ul> {user?.items.map(item => {
+
+
+
+
                             return (
                                 <>
-                                    <h4>Item: {item.name}</h4>
+                                    <div className="item">
+                                        <h4>Item: {item.name}</h4>
 
-                                    <button onClick={() => history.push(`/requests/requestItemForm/${item.id}`)}> request item</button>
 
-                                    {/* create link for form */}
-                                    <h4>Description: {item.description}</h4>
-
+                                        <h4>Description: {item.description}</h4>
+                                        <button onClick={() => history.push(`/requests/requestItemForm/${item.id}`)}> request item</button>
+                                    </div>
                                 </>
                             )
                         })}</ul>
@@ -85,9 +85,9 @@ export const Profile = () => {
 
 
                 </>
-                
-                    
-                
+
+
+
             </div>
         </>
     )
