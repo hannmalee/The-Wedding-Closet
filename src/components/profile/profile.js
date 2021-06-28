@@ -55,15 +55,15 @@ export const Profile = () => {
                 <h1>User Profile</h1>
 
                 <>
-                    <ul>Name: {user?.name}</ul>
-                    <ul>Location: {user?.city}, {user?.state}</ul>
-                    <ul>About Me: {user?.aboutMe}</ul>
-                    <ul>Email: {user?.email}</ul>
+                    <ul>Name: {user.name}</ul>
+                    <ul>Location: {user.city}, {user?.state}</ul>
+                    <ul>About Me: {user.aboutMe}</ul>
+                    <ul>Email: {user.email}</ul>
 
-                    <h3> {user?.name}'s shelf </h3>
+                    <h3> {user.name}'s shelf </h3>
 
                     <div className="items">
-                        <ul> {user?.items.map(item => {
+                        <ul> {user.items.map(item => {
                             
                         
                               
