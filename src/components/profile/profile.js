@@ -20,21 +20,24 @@ export const Profile = () => {
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
     const [user, setUser] = useState({ items: [] })
-    const { items, getItems } = useContext(ItemContext)
-    const { userId, itemId } = useParams();
-    const [item, setItem] = useState([])
+    // const { items, getItems } = useContext(ItemContext)
+    const { userId } = useParams();
+    // const [item, setItem] = useState([])
 
     const history = useHistory()
 
     useEffect(() => {
-        const thisProfile = users.find(u => u.id === parseInt(userId))
+        const thisProfile = users.find(u => u.id === parseInt(userId)) || { items: []}
         setUser(thisProfile)
     }, [users])
 
-    useEffect(() => {
-        const thisItem = items.find(item => item.id === parseInt(user.itemId))
-        setItem(thisItem)
-    }, [items])
+    // useEffect(() => {
+    //     const thisItem = items.find(item => {
+    //     debugger
+    //     return item.id === parseInt(user.itemId)
+    // })
+    //     setItem(thisItem)
+    // }, [items])
 
 
     // useEffect(() => {
@@ -43,7 +46,6 @@ export const Profile = () => {
 
     useEffect(() => {
         getUsers()
-            .then(() => getItems())
     }, [])
 
 
@@ -55,15 +57,15 @@ export const Profile = () => {
                 <h1>User Profile</h1>
 
                 <>
-                    <ul>Name: {user?.name}</ul>
-                    <ul>Location: {user?.city}, {user?.state}</ul>
-                    <ul>About Me: {user?.aboutMe}</ul>
-                    <ul>Email: {user?.email}</ul>
+                    <ul>Name: {user.name}</ul>
+                    <ul>Location: {user.city}, {user.state}</ul>
+                    <ul>About Me: {user.aboutMe}</ul>
+                    <ul>Email: {user.email}</ul>
 
-                    <h3 className="userShelf"> {user?.name}'s shelf </h3>
+                    <h3 className="userShelf"> {user.name}'s shelf </h3>
 
                     <div className="items">
-                        <ul> {user?.items.map(item => {
+                        <ul> {user.items.map(item => {
 
 
 

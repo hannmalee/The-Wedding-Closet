@@ -21,6 +21,7 @@ export const RequestInbox = () => {
     useEffect(() => {
         getRequests()
             .then(getUsers)
+            .then(setRequest)
     }, [])
 
     useEffect(() => {
@@ -48,6 +49,34 @@ export const RequestInbox = () => {
     //     getUserProfiles()
     // }, [])
 
+    // const handleClickApproveRequest = (event => {
+
+    //     // const userId = parseInt(localStorage.getItem("wedding_closet_user"))
+    
+
+    //     const approveRequest = {
+
+    //         if(requestId) {
+    //             approveRequest({
+    //                 userId: request.userId,
+    //                 recipientId: request.recipientId,
+    //                 requestAccepted: true,
+    //                 text: request.text,
+    //                 itemId: request.itemId,
+    //                 read: true,
+    //                 date: request.date
+    //             })
+            
+    //             .then(() => history.push("/requests"))
+    //         }
+        
+
+
+
+
+    //     }
+    // })
+
 
     return (
         <>
@@ -55,7 +84,7 @@ export const RequestInbox = () => {
 
             <div className="requests">
 
-            <h2 className="request-header">Request Inbox</h2>
+                <h2 className="request-header">Request Inbox</h2>
 
                 {requests.map((request) => { //only map can return jsx
 
@@ -78,7 +107,7 @@ export const RequestInbox = () => {
                                         <h3>Request from {request.user.name} for {request.item.name}</h3>
 
                                         <h4> {request.text} </h4>
-                                        <button className="nav__button"> approve request </button>
+                                        <button className="nav__button">approve request </button>
                                         <button className="nav__button"> deny request </button>
                                     </div>
                                 </div>

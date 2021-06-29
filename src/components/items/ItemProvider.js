@@ -8,7 +8,7 @@ export const ItemProvider = (props) => {
     const getItems = () => {
         return fetch("http://localhost:8088/items?_expand=user")
             .then(res => res.json())
-            // .then((itemData) => setItems(itemData))
+            .then((itemData) => setItems(itemData))
     }
 
     const addItem = itemObj => {

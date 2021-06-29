@@ -34,7 +34,7 @@ export const AddItemForm = () => {
 
     const handleClickSaveItem = (event => {
 
-        
+        event.preventDefault()
 
         const userId = parseInt(localStorage.getItem("wedding_closet_user"))
 
@@ -45,7 +45,7 @@ export const AddItemForm = () => {
             description: item.description,
         }
         addItem(newItem)
-            .then(() => history.push("/items"))
+            .then(() => history.push(`/profile/myProfile/${userId}`))
 
 
     }

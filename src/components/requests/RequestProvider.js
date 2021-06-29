@@ -23,10 +23,21 @@ export const RequestProvider = (props) => {
             .then(getRequests)
     }
 
+    const approveRequest = request => {
+        return fetch (`http://localhost:8088/requests/${request.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(request)
+        })
+            .then(getRequests)
+    }
+
 
     return (
         <RequestContext.Provider value={{
-            requests, getRequests, addRequest
+            requests, getRequests, addRequest, approveRequest
         }}>
             {props.children}
         </RequestContext.Provider>
