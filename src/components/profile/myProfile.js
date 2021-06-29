@@ -58,14 +58,17 @@ export const MyProfile = () => {
 
                         return (
                             <>
+                            <div className="profile__info">
+
                                 <h3>Name: {user.name}</h3>
                                 <h3>Location: {user.city}, {user.state}</h3>
                                 <h3>About Me: {user.aboutMe}</h3>
                                 <h3>Email: {user.email}</h3>
 
-                                <h3> {user.name}'s shelf </h3>
+                            </div>
 
                                 <div className="items">
+                                <h2> {user.name}'s shelf </h2>
                                     <ul> {user.items.map(item => {
 
                                         const handleDelete = () => {
@@ -84,13 +87,15 @@ export const MyProfile = () => {
                                             <>
 
 
+                                                <div className="item">
 
-                                                <h4>Item: {item.name}</h4> <button onClick={() => {
+                                                <h4>Item: {item.name}</h4> <button className="nav__button" onClick={() => {
                                                     history.push(`/items/edit/${item.id}`)
-                                                }}> edit</button><button onClick={handleDelete}> delete</button>
+                                                }}> edit</button><button className="nav__button" onClick={handleDelete}> delete</button>
                                                 {/* create form for editing,deleting */}
                                                 <h4>Description: {item.description}</h4>
 
+                                                </div>
                                             </>
                                         )
                                     })}</ul>
@@ -98,7 +103,7 @@ export const MyProfile = () => {
                                 </div>
                                 <div className="addItemButton">
 
-                                    <button onClick={
+                                    <button className="nav__button" onClick={
                                         () => history.push("/items/create")
                                     }> add item </button>
                                 </div>

@@ -2,12 +2,25 @@
 .request {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    border: 1px solid white;
+    padding: 2em;
+    margin: 2em;
+    text-align: center;
+    background-color: wheat;
   }
   
   .requests {
       flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
+      margin: 3em;
+      padding: 5em;
       border: 1px solid goldenrod;
+
   }
+  .request-header {
+      text-align: center;
+      font-size: 50px;
+      color: black
+  }
+
+ 

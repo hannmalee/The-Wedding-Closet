@@ -20,7 +20,7 @@ export const RequestInbox = () => {
 
     useEffect(() => {
         getRequests()
-        .then(getUsers)
+            .then(getUsers)
     }, [])
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export const RequestInbox = () => {
     }, [])
 
     useEffect(() => {
-        const userRequests = requests.filter(r => r.recipientId === parseInt(localStorage.getItem("wedding_closet_user"))) 
+        const userRequests = requests.filter(r => r.recipientId === parseInt(localStorage.getItem("wedding_closet_user")))
         // || {
         //     userId: {},
         //     recipientId: {}, requestAccepted: {}, text: {}, itemId: {}, read: {}, date: {}
@@ -51,9 +51,11 @@ export const RequestInbox = () => {
 
     return (
         <>
-            <div className="request">
 
-                <h1>Request Inbox</h1>
+
+            <div className="requests">
+
+            <h2 className="request-header">Request Inbox</h2>
 
                 {requests.map((request) => { //only map can return jsx
 
@@ -62,30 +64,32 @@ export const RequestInbox = () => {
 
                     if (request.recipientId === parseInt(localStorage.getItem("wedding_closet_user"))) {
 
-                    // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
-                    return (
-                        <>
-                            {/* <h3>Request from {user.name} to borrow {item.name}</h3>
+                        // parseInt(localStorage.getItem("the_wedding_closet_user"))) {
+                        return (
+                            <>
+                                <div className="request">
+                                    {/* <h3>Request from {user.name} to borrow {item.name}</h3>
 
-                                <h4> {request.text} </h4>
-                               
-                                <radio>see {user.name}'s shelf</radio> */}
-                            
-                            <div>
-                                <h3>Request from {request.user.name} for {request.item.name}</h3>
-                                
-                                <h4> {request.text} </h4>
-                                <button> approve request </button> 
-                                <button> deny request </button>
-                            </div>
-                    
-                        </>
+                                            <h4> {request.text} </h4>
 
-                    )
-                }
+                                            <radio>see {user.name}'s shelf</radio> */}
+
+                                    <div>
+                                        <h3>Request from {request.user.name} for {request.item.name}</h3>
+
+                                        <h4> {request.text} </h4>
+                                        <button className="nav__button"> approve request </button>
+                                        <button className="nav__button"> deny request </button>
+                                    </div>
+                                </div>
+
+                            </>
+
+                        )
+                    }
 
 
-            })}
+                })}
             </div>
         </>
     )

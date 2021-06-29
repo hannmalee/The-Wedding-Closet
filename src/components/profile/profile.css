@@ -2,18 +2,27 @@
 .profile {
     display: flexbox;
     flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .profiles {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid goldenrod;
-  }
+    justify-content: center;
+    margin: 40px
+}
+
+.profiles {
+    flex-basis: 28%;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
+}
 
 .userShelf {
     margin: 2em;
     font-size: 2em;
     text-align: center;
+}
+.profile__info {
+    justify-content: center;
+    margin:60px;
+    text-align: center;
+    background-color: blanchedalmond;
+    padding: 4px
+    
 }

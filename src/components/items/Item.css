@@ -7,6 +7,8 @@
     justify-content: center;
     border-width:thin;
     position:static;
+    background-color: blanchedalmond;
+    padding: 3px;
 
     
   }
@@ -21,6 +23,7 @@
   
   .addItemButton {
      text-align: center;
+    color: gray;
   }
 
   .item__list {
