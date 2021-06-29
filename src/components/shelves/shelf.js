@@ -28,8 +28,10 @@ export const Shelf = ({userObj}) => {
 
                     return (
                         <>
+                        <div className="item">
                         <h3 className= "item__name-list">{item.name}</h3>
                         <h4 className= "item__description-list">{item.description}</h4>
+                        </div>
                         </>
                         )
                 })}

@@ -11,25 +11,29 @@ export const NavBar = (props) => {
     }
     
     return (
+       
+
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/">The Wedding Closet</Link>
+                <Link className="navbar__link" to="/">
+                    <button className="nav__button">The Wedding Closet</button></Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to={`/profile/myProfile/${localStorage.getItem('wedding_closet_user')}`}>
-                    <button>My Profile</button>
+                    <button className="nav__button">My Profile</button>
                     </Link>
                 
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/requests"><button>Request Inbox</button></Link>
+                <Link className="navbar__link" to="/requests"><button className="nav__button">Request Inbox</button></Link>
                 
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/login"><button onClick={logOut}>logout</button></Link>
+                <Link className="navbar__link" to="/login"><button className="nav__button" onClick={logOut}>logout</button></Link>
                 
             </li>
 
         </ul>
+           
     )
 }

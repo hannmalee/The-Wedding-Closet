@@ -62,7 +62,9 @@ export const ApplicationViews = () => {
                             <RequestInbox />
                         </Route>
                         <Route exact path="/">
+                            <div className="homePageHeader">
                             <h2>Community Shelves</h2>
+                            </div>
                             <article className="feed">
 
                                 <ShelfList />
