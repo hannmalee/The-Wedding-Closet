@@ -65,6 +65,11 @@ export const MyProfile = () => {
                                 <h3>About Me: {user.aboutMe}</h3>
                                 <h3>Email: {user.email}</h3>
 
+                                <button onClick={() => history.push(`/profile/editMyProfile/${parseInt(localStorage.getItem("wedding_closet_user"))}`)}>
+                                edit my profile </ button>
+
+                                
+
                             </div>
 
                                 <div className="items">
