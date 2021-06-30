@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
     // useEffect (() => {
     //     getUsers()
     // }, [])
-
+  console.log("3. application view is loaded")
     return (
         <>
             <ItemProvider>

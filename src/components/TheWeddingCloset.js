@@ -13,6 +13,7 @@ export const TheWeddingCloset = () => (
     <Route
       render={() => {
         if (localStorage.getItem("wedding_closet_user")) {
+          console.log("2. wedding closet component loaded")
           return (
             <>
               <ApplicationViews />

@@ -5,6 +5,8 @@ export const ItemContext = createContext()
 export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
 
+    console.log("4. item provider loaded")
+
     const getItems = () => {
         return fetch("http://localhost:8088/items?_expand=user")
             .then(res => res.json())

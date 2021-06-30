@@ -11,7 +11,7 @@ ReactDOM.render(
       <TheWeddingCloset />
       </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'), console.log("1. at index.js")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -17,6 +17,8 @@ import { RequestItemForm } from "../requests/requestItemForm"
 
 export const Profile = () => {
 
+    console.log("5. profile component loaded")
+
     const { users, getUsers } = useContext(UserContext)
     // const { getUserProfiles } = useContext(UserContext)
     const [user, setUser] = useState({ items: [] })
@@ -27,17 +29,11 @@ export const Profile = () => {
     const history = useHistory()
 
     useEffect(() => {
+        console.log("8. useEffect observing 'users'")
         const thisProfile = users.find(u => u.id === parseInt(userId)) || { items: []}
         setUser(thisProfile)
     }, [users])
 
-    // useEffect(() => {
-    //     const thisItem = items.find(item => {
-    //     debugger
-    //     return item.id === parseInt(user.itemId)
-    // })
-    //     setItem(thisItem)
-    // }, [items])
 
 
     // useEffect(() => {
@@ -45,6 +41,7 @@ export const Profile = () => {
     // }, [])
 
     useEffect(() => {
+        console.log("9. useEffect with empty dependency array")
         getUsers()
     }, [])
 
