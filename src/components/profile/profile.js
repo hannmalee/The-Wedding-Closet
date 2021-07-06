@@ -2,13 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { UserContext, } from "../UserProvider"
 import "./profile.css"
-import { UserProvider } from "../UserProvider"
-import { Link } from "react-router-dom"
-import { Shelf } from "../shelves/shelf"
-import { UserShelf } from "../shelves/userShelf"
-import { ItemContext } from "../items/ItemProvider"
-import { Item } from "../items/Item"
-import { RequestItemForm } from "../requests/requestItemForm"
 
 
 
@@ -17,28 +10,23 @@ import { RequestItemForm } from "../requests/requestItemForm"
 
 export const Profile = () => {
 
-    console.log("5. profile component loaded")
+    // console.log("5. profile component loaded")
 
     const { users, getUsers } = useContext(UserContext)
-    // const { getUserProfiles } = useContext(UserContext)
+    
     const [user, setUser] = useState({ items: [] })
-    // const { items, getItems } = useContext(ItemContext)
+  
     const { userId } = useParams();
-    // const [item, setItem] = useState([])
+    
 
     const history = useHistory()
 
     useEffect(() => {
-        console.log("8. useEffect observing 'users'")
+        console.log("8. useEffect observing 'users'") // runs again after useEffect on line 36
         const thisProfile = users.find(u => u.id === parseInt(userId)) || { items: []}
-        setUser(thisProfile)
+        setUser(thisProfile)// passing the argument "thisProfile" to setUser
     }, [users])
 
-
-
-    // useEffect(() => {
-    //     getUserProfiles()
-    // }, [])
 
     useEffect(() => {
         console.log("9. useEffect with empty dependency array")

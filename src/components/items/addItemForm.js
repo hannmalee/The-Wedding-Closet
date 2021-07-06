@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 export const AddItemForm = () => {
 
     const { addItem } = useContext(ItemContext)
-    const { users, getUsers } = useContext(UserContext)
+    const { getUsers } = useContext(UserContext)
 
     const [item, setItem] = useState({
 

@@ -15,7 +15,7 @@ export const Register = (props) => {
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
-            .then(res => res.json())
+            .then(res => res.json()) // essentially turning it into an object
             .then(user => !!user.length)
     }
 

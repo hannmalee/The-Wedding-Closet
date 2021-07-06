@@ -15,7 +15,7 @@ export const Shelf = ({userObj}) => {
     useEffect(() => {
         getUserItems(userObj.id)
             .then(data => setItems(data))
-    }, [] ) // ask monica about why this is needed!
+    }, [] ) 
 
 
     return (
