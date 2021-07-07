@@ -94,11 +94,13 @@ export const MyProfile = () => {
 
                                                 <div className="item">
 
-                                                <h4>Item: {item.name}</h4> <button className="nav__button" onClick={() => {
+                                                <h4>Item: {item.name}</h4> 
+                                                <h4>Description: {item.description}</h4>
+                                                
+                                                <button className="nav__button" onClick={() => {
                                                     history.push(`/items/edit/${item.id}`)
                                                 }}> edit</button><button className="nav__button" onClick={handleDelete}> delete</button>
                                                 {/* create form for editing,deleting */}
-                                                <h4>Description: {item.description}</h4>
 
                                                 </div>
                                             </>
