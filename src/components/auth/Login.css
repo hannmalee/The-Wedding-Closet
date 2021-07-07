@@ -11,8 +11,10 @@ fieldset {
 
 .form--login {
     display: inline-block;
-    margin: 3 auto;
+    margin: 30px ;
     text-align: left;
+    background-color: rgb(145, 155, 145);
+
 }
 
 .form--login > fieldset > input[type="email"],
@@ -24,6 +26,7 @@ fieldset {
 .label--login {
     width: 8rem;
     display: inline-block;
+    
 }
 
 .form-control {
@@ -46,17 +49,19 @@ fieldset {
 
 .container--login {
     text-align: center;
+    background-color: rgb(145, 155, 145);
 }
 
 .form--login {
-    background-position-x: right;
+    background-position-x: center;
     /* background-image: ; */
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
+    background-color: rgb(145, 155, 145);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    border: #495057 solid;
 }
 
 .button--close {
@@ -68,4 +73,12 @@ fieldset {
     min-width: 15rem;
     min-height: 5rem;
 }
+
+/* .login-taco {
+    align-items: center;
+} */
+
+/* .input-fix-me {
+    text-align: center;
+} */
 

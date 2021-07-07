@@ -37,11 +37,11 @@ export const Login = props => {
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
 
-            <section>
+            <section className="login-taco">
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>The Wedding Closet</h1>
                     <h2>Please sign in</h2>
-                    <fieldset>
+                    <fieldset className="input-fix-me">
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"
                             id="email"
