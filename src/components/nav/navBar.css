@@ -20,6 +20,10 @@
 }
 
 .nav__button {
-    color: goldenrod;
+    color: black;
     background-color: grey;
+}
+
+.nav__header {
+    text-align: center;
 }

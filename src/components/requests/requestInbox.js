@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { RequestContext } from "./RequestProvider"
 import "./request.css"
 import { ItemContext } from "../items/ItemProvider"
@@ -8,13 +8,15 @@ import { UserContext } from "../UserProvider"
 
 
 
+
 export const RequestInbox = () => {
 
-    const { requests, getRequests } = useContext(RequestContext)
+    const { requests, getRequests, approveRequest } = useContext(RequestContext)
     // const { getUserProfiles } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
-    const [arrayOfRequests, setRequest] = useState([])
+    const [request, setRequest] = useState([])
     const { users, getUsers } = useContext(UserContext)
+    const history = useHistory()
 
     const { requestId } = useParams();
 
@@ -54,28 +56,28 @@ export const RequestInbox = () => {
     //     // const userId = parseInt(localStorage.getItem("wedding_closet_user"))
     
 
-    //     const approveRequest = {
+        const handlClickApproveRequest = {
 
-    //         if(requestId) {
-    //             approveRequest({
-    //                 userId: request.userId,
-    //                 recipientId: request.recipientId,
-    //                 requestAccepted: true,
-    //                 text: request.text,
-    //                 itemId: request.itemId,
-    //                 read: true,
-    //                 date: request.date
-    //             })
+            if(requestId) {
+                approveRequest({
+                    userId: request.userId,
+                    recipientId: request.recipientId,
+                    requestAccepted: true,
+                    text: request.text,
+                    itemId: request.itemId,
+                    read: true,
+                    date: request.date
+                })
             
-    //             .then(() => history.push("/requests"))
-    //         }
+                .then(() => history.push("/requests"))
+            }
         
 
 
 
 
-    //     }
-    // })
+        }
+    
 
 
     return (
@@ -104,11 +106,11 @@ export const RequestInbox = () => {
                                             <radio>see {user.name}'s shelf</radio> */}
 
                                     <div>
-                                        <h3>Request from {request.user.name} for {request.item.name}</h3>
+                                        <h3>Request from {request.user.name} for your {request.item.name}:</h3>
 
                                         <h4> {request.text} </h4>
-                                        <button className="nav__button">approve request </button>
-                                        <button className="nav__button"> deny request </button>
+                                        {/* <button className="nav__button" onClick={handlClickApproveRequest}>approve request </button> */}
+                                        {/* <button className="nav__button"> deny request </button> */}
                                     </div>
                                 </div>
 

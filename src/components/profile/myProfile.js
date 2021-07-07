@@ -49,7 +49,7 @@ export const MyProfile = () => {
         <>
             <div className="profile">
 
-                <h1>User Profile</h1>
+                <h1>My Profile</h1>
 
                 {users.map(user => { //only map can return JSX
 
@@ -73,7 +73,7 @@ export const MyProfile = () => {
                             </div>
 
                                 <div className="items">
-                                <h2> {user.name}'s shelf </h2>
+                                <h2> My Shelf </h2>
                                     <ul> {user.items.map(item => {
 
                                         const handleDelete = () => {

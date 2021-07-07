@@ -39,20 +39,24 @@ export const Profile = () => {
         <>
             <div className="profile">
 
-                <h1>User Profile</h1>
+                <h1>{user.name}'s Profile</h1>
 
                 <>
-                    <ul>Name: {user.name}</ul>
-                    <ul>Location: {user.city}, {user.state}</ul>
-                    <ul>About Me: {user.aboutMe}</ul>
-                    <ul>Email: {user.email}</ul>
+                <div className="profile__info">
 
-                    <h3 className="userShelf"> {user.name}'s shelf </h3>
+                    <h2>Name: {user.name}</h2>
+                    <h2>Location: {user.city}, {user.state}</h2>
+                    <h2>About Me: {user.aboutMe}</h2>
+                    <h2>Email: {user.email}</h2>
+                </div>
+
 
                     <div className="items">
+                        <h3 className="userShelf"> {user.name}'s Shelf: </h3>
                         <ul> {user.items.map(item => {
-
-
+                            
+                            
+                            
 
 
                             return (
@@ -62,7 +66,7 @@ export const Profile = () => {
 
 
                                         <h4>Description: {item.description}</h4>
-                                        <button onClick={() => history.push(`/requests/requestItemForm/${item.id}`)}> request item</button>
+                                        <button className="nav__button" onClick={() => history.push(`/requests/requestItemForm/${item.id}`)}> request item</button>
                                     </div>
                                 </>
                             )

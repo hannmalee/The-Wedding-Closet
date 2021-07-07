@@ -1,9 +1,12 @@
 
 .profile {
-    display: flexbox;
+    display: block;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 40px
+    margin: 40px;
+    text-align: center;
+    border: 2px black solid;
+    background-color:blanchedalmond;
 }
 
 .profiles {
@@ -17,6 +20,7 @@
     margin: 2em;
     font-size: 2em;
     text-align: center;
+    background-color: blanchedalmond;
 }
 .profile__info {
     justify-content: center;

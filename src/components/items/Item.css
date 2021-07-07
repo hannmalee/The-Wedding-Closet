@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    border: solid;
+  
     justify-content: center;
     border-width:thin;
     position:static;

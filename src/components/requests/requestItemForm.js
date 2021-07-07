@@ -122,12 +122,15 @@ export const RequestItemForm = () => {
 
     return (
         <>
-            <h3>Send request for {user.name}'s {item.name}:</h3>
-            <fieldset className="request__message" onChange={handleControlledInputChange}>
+        <div className="request__message">
+
+            <h2>Send request for {user.name}'s {item.name}:</h2>
+            <fieldset onChange={handleControlledInputChange}>
                 <label htmlFor="message">compose message:</label>
                 <input type="text" id="text" required autoFocus className="form-control" placeholder="input request message" value={request.text} onChange={handleControlledInputChange} />
             </fieldset>
             <button onClick={handleClickRequestItem}>Send Request</button>
+        </div>
         </>
 
     )

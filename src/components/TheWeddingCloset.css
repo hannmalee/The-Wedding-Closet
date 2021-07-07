@@ -1,5 +1,5 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 
 /*Typography
 --------------------------------------------------------------*/
@@ -9,10 +9,10 @@ input,
 select,
 textarea {
   color: black;
-  font-family: "Comfortaa", Arial, sans-serif;
+  font-family: 'EB Garamond', serif;
   font-size: 14px;
   line-height: 1.5;
-  background-color: rgb(3, 3, 87);
+  background-color: rgb(145, 155, 145)
 }
 
 h1, h2, h3, h4, h5, h6 {
